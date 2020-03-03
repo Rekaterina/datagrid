@@ -1,2 +1,0 @@
-# datagrid
-React &amp; Redux
