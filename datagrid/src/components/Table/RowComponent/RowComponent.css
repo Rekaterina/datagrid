@@ -1,0 +1,52 @@
+.row {
+  display: flex;
+  align-items: center;
+  width: 155% !important;
+}
+
+.row-cell {
+  width: 120px;
+  padding: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.row-number {
+  width: 50px;
+}
+
+.row-address,
+.row-name {
+  width: 190px;
+}
+
+.row-email,
+.row-job-position {
+  width: 250px;
+}
+
+.row-hobby {
+  width: 140px;
+}
+
+.row-name,
+.row-number {
+  position: sticky;
+}
+
+.row-number {
+  left: 0px;
+}
+
+.row-name {
+  left: 69px;
+}
+
+.even {
+  background-color: rgb(243, 242, 242);
+}
+
+.odd {
+  background-color: rgb(255, 255, 255);
+}

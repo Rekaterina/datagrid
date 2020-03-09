@@ -1,0 +1,45 @@
+.table-head {
+  display: flex;
+  width: 1300px;
+  font-weight: 700;
+  color: rgb(49, 81, 185);
+  background-color: rgb(224, 224, 250);
+}
+
+.table-head-cell {
+	width: 120px;
+  padding: 10px;
+}
+
+.table-head-number {
+  width: 50px;
+}
+
+.table-head-address,
+.table-head-name {
+  width: 190px;
+}
+
+.table-head-email,
+.table-head-job-position {
+  width: 250px;
+}
+
+.table-head-hobby {
+  width: 140px;
+}
+
+.table-head-name,
+.table-head-number {
+  position: sticky;
+}
+
+.table-head-number {
+  left: 0px;
+  background-color: rgb(224, 224, 250);
+}
+
+.table-head-name {
+  left: 69px;
+  background-color: rgb(224, 224, 250);
+}
