@@ -9,44 +9,52 @@ import './Table.css';
 
 
 class Table extends React.Component {
+  componentDidUpdate(prevProps) {
+    const { mainFilterText, nameFilterText, changeRowsData } = this.props;
+    if (mainFilterText !== prevProps.mainFilterText ||
+      nameFilterText !== prevProps.nameFilterText) {
+      let rows = [];
 
-  filterData() {
-    let rows = [];
-    data.forEach(item => {
-      if (item.address.city.indexOf(this.props.mainFilterText) === -1) {
-        return;
-      }
-      rows.push(item);
-    });
-    console.log(rows);
-    this.props.changeRowsData(rows);
-    console.log(this.props);
+      data.forEach(item => {
+        const { name, address, job } = item;
+        const { first, last } = name;
+        const { city, state } = address;
+        const { company, position } = job;
+        const mainFilteredString = `${first} ${last} ${city} ${state} ${company} ${position}`;
+        const nameFilteredString = `${first} ${last}`;
+        if (mainFilteredString.toLowerCase().indexOf(mainFilterText.toLowerCase()) === -1 ||
+          nameFilteredString.toLowerCase().indexOf(nameFilterText.toLowerCase()) === -1) {
+          return;
+        }
+        rows.push(item);
+      });
+      changeRowsData(rows);
+    }
   }
 
   render() {
-    this.filterData();
-    const Row = ({ index, style }) => { 
-      
-      return (<RowComponent rowData={this.props.rowsData[index-1]} style={style} index={index}/>);
-    } 
+    const { rowsData } = this.props;
+    const Row = ({ index, style }) => {
+      return (<RowComponent rowData={rowsData[index - 1]} style={style} index={index} />);
+    }
     return (
-        <List
-          className="list"
-          height={700}
-          itemCount={26}
-          // itemCount={this.props.rowsData.length + 1}
-          itemSize={45}
-          width={1300}>
-          {Row}
-        </List>
-    ) 
+      <List
+        className="list"
+        height={673}
+        itemCount={rowsData.length + 1}
+        itemSize={60}
+        width={1300}>
+        {Row}
+      </List>
+    )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     rowsData: state.rowsData,
-    mainFilterText: state.mainFilterText
+    mainFilterText: state.mainFilterText,
+    nameFilterText: state.nameFilterText
   }
 }
 

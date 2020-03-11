@@ -1,0 +1,18 @@
+.search-name-input {
+  height: 20px;
+  width: 150px;
+  padding: 2px;
+  border: 1px solid rgb(49, 81, 185);
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.fa-search {
+  margin-left: 90px;
+  color:gray;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

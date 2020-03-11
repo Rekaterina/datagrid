@@ -7,7 +7,7 @@ import './RowComponent.css';
 const RowComponent = ({ rowData, style, index }) => {
   if (index === 0) {
     return (
-      <div style={style} className="table-head row">
+      <div style={style} className="table-head">
         <TableHead />
       </div>)
   } else {

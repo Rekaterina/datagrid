@@ -1,5 +1,6 @@
 import React from 'react';
 
+import NameTitle from './NameTitle/NameTitle';
 import './TableHead.css';
 
 class TableHead extends React.Component {
@@ -7,10 +8,10 @@ class TableHead extends React.Component {
     return (
     <>
         <div className="table-head-cell table-head-number">No.</div>
-        <div className="table-head-cell table-head-name">Name</div>
+        <NameTitle />
         <div className="table-head-cell table-head-birth date">Birth date</div>
         <div className="table-head-cell table-head-email">Email</div>
-        <div className="table-head-cell table-head-address">Address</div>
+        <div className="table-head-cell table-head-address">Location</div>
         <div className="table-head-cell table-head-job-company">Job company</div>
         <div className="table-head-cell table-head-job-position">Job position</div>
         <div className="table-head-cell table-head-salary">Salary</div>

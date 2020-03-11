@@ -8,13 +8,13 @@ class SearchInput extends React.Component {
   render() {
     const { mainFilterText, changeMainFilterText } = this.props;
     return (
-      <input 
-        className="search-input" 
-        type='text' 
-        placeholder="Name, address, company" 
+      <input
+        className="main-search-input"
+        type='text'
+        placeholder="Search name, location, job"
         value={mainFilterText}
         onChange={(event) => {changeMainFilterText(event.target.value);
-      }}
+        }}
       />
     )
   }
