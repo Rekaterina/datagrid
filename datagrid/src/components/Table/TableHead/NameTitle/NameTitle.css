@@ -1,10 +1,11 @@
 .search-name-input {
-  height: 20px;
-  width: 150px;
+  height: 18px;
+  width: 140px;
   padding: 2px;
   border: 1px solid rgb(49, 81, 185);
   border-radius: 3px;
-  font-size: 16px;
+  font-size: 14px;
+  outline: none;
 }
 
 .fa-search {

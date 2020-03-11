@@ -8,14 +8,18 @@ class SearchInput extends React.Component {
   render() {
     const { mainFilterText, changeMainFilterText } = this.props;
     return (
-      <input
-        className="main-search-input"
-        type='text'
-        placeholder="Search name, location, job"
-        value={mainFilterText}
-        onChange={(event) => {changeMainFilterText(event.target.value);
-        }}
-      />
+      <div className='main-search-input-container'>
+        <label className='label main-search-input-label' htmlFor='main-search-input'>Name, location, job</label>
+        <input
+          className='main-search-input'
+          type='text'
+          placeholder='Search'
+          value={mainFilterText}
+          onChange={(event) => {
+            changeMainFilterText(event.target.value);
+          }}
+        />
+      </div>
     )
   }
 }

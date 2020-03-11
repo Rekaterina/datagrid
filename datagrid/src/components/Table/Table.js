@@ -40,10 +40,10 @@ class Table extends React.Component {
     return (
       <List
         className="list"
-        height={673}
+        height={617}
         itemCount={rowsData.length + 1}
-        itemSize={60}
-        width={1300}>
+        itemSize={55}
+        width={1100}>
         {Row}
       </List>
     )

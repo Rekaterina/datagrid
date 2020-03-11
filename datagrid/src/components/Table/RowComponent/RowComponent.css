@@ -1,7 +1,7 @@
 .row {
   display: flex;
   align-items: center;
-  width: 155% !important;
+  width: 183% !important;
 }
 
 .row-cell {
@@ -40,7 +40,7 @@
 }
 
 .row-name {
-  left: 69px;
+  left: 68px;
 }
 
 .even {

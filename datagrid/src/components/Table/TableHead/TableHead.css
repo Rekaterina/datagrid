@@ -1,6 +1,6 @@
 .table-head {
   display: flex;
-  width: 155% !important;
+  width: 183% !important;
   font-weight: 700;
   color: rgb(49, 81, 185);
   background-color: rgb(224, 224, 250);
@@ -40,6 +40,6 @@
 }
 
 .table-head-name {
-  left: 69px;
+  left: 68px;
   background-color: rgb(224, 224, 250);
 }

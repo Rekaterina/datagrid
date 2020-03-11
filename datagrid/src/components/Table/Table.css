@@ -1,5 +1,5 @@
 .list {
-	font-size: 18px;
+	font-size: 16px;
 }
 
 ::-webkit-scrollbar-track {
@@ -14,5 +14,5 @@
 }
 
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 15px;
 }
