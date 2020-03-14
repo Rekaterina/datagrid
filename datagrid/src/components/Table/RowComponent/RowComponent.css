@@ -1,7 +1,7 @@
 .row {
   display: flex;
   align-items: center;
-  width: 183% !important;
+  width: 1400px !important;
 }
 
 .row-cell {
@@ -16,18 +16,16 @@
   width: 50px;
 }
 
-.row-address,
 .row-name {
   width: 190px;
 }
 
-.row-email,
-.row-job-position {
-  width: 250px;
+.row-location {
+  width: 160px;
 }
 
-.row-hobby {
-  width: 140px;
+.row-job {
+  width: 250px;
 }
 
 .row-name,

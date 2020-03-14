@@ -2,7 +2,11 @@ import {
 	ACTION_CHANGE_MAIN_FILTER_TEXT,
 	ACTION_CHANGE_ROWS_DATA,
 	ACTION_CHANGE_NAME_FILTER_TEXT,
-	ACTION_CHANGE_INPUT_VISIBILITY
+	ACTION_CHANGE_LOCATION_FILTER_TEXT,
+	ACTION_CHANGE_CHECKBOX_YES,
+	ACTION_CHANGE_CHECKBOX_NO,
+	ACTION_CHANGE_SELECTED_LANGUAGES,
+	ACTION_CHANGE_SELECTED_RATING
 	
 } from './actionConstants';
 
@@ -20,6 +24,13 @@ const changeNameFilterText = (newNameFilterText) => {
 	}
 }
 
+const changeLocationFilterText = (newLocationFilterText) => {
+	return {
+		type: ACTION_CHANGE_LOCATION_FILTER_TEXT,
+		payload: newLocationFilterText
+	}
+}
+
 const changeRowsData = (newRowsData) => {
 	return {
 		type: ACTION_CHANGE_ROWS_DATA,
@@ -27,10 +38,31 @@ const changeRowsData = (newRowsData) => {
 	}
 }
 
-const changeInputVisibility = (boolean) => {
+const changeCheckboxYes = (boolean) => {
 	return {
-		type: ACTION_CHANGE_INPUT_VISIBILITY,
+		type: ACTION_CHANGE_CHECKBOX_YES,
 		payload: boolean
+	}
+}
+
+const changeCheckboxNo = (boolean) => {
+	return {
+		type: ACTION_CHANGE_CHECKBOX_NO,
+		payload: boolean
+	}
+}
+
+const changeSelectedLanguages = (lang) => {
+	return {
+		type: ACTION_CHANGE_SELECTED_LANGUAGES,
+		payload: lang
+	}
+}
+
+const changeSelectedRating = (rating) => {
+	return {
+		type: ACTION_CHANGE_SELECTED_RATING,
+		payload: rating
 	}
 }
 
@@ -38,5 +70,9 @@ export {
 	changeMainFilterText,
 	changeRowsData,
 	changeNameFilterText,
-	changeInputVisibility
+	changeLocationFilterText,
+	changeCheckboxYes,
+	changeCheckboxNo,
+	changeSelectedLanguages,
+	changeSelectedRating
 }

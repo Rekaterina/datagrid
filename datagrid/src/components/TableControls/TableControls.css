@@ -1,5 +1,6 @@
 .table-controls {
   display: flex;
   flex-direction: column;
+  width: 210px;
   margin-left: 10px;
 }

@@ -1,4 +1,4 @@
-.search-name-input {
+.search-input {
   height: 18px;
   width: 140px;
   padding: 2px;
@@ -16,4 +16,9 @@
 
 .hidden {
   display: none;
+}
+
+.search-input:focus {
+  border: 1px solid #2684FF;
+  box-shadow: 0 0 0 1px #2684FF;
 }

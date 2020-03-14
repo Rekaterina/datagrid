@@ -2,18 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changeMainFilterText } from '../../../store/actions';
 
-import './SearchInput.css';
+import './SearchInputs.css';
 
-class SearchInput extends React.Component {
+class AllFieldsSearchInput extends React.Component {
   render() {
     const { mainFilterText, changeMainFilterText } = this.props;
     return (
-      <div className='main-search-input-container'>
-        <label className='label main-search-input-label' htmlFor='main-search-input'>Name, location, job</label>
+      <div className='filter-container'>
+        <p className='filter-title'>All fields</p>
         <input
-          className='main-search-input'
+          className='search-input'
           type='text'
-          placeholder='Search'
+          placeholder='Search...'
           value={mainFilterText}
           onChange={(event) => {
             changeMainFilterText(event.target.value);
@@ -34,4 +34,4 @@ const mapDispatchToProps = {
   changeMainFilterText
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);
+export default connect(mapStateToProps, mapDispatchToProps)(AllFieldsSearchInput);

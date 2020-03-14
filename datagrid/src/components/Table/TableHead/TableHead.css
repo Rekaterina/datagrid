@@ -1,12 +1,16 @@
 .table-head {
+  top: 0 !important;
   display: flex;
-  width: 183% !important;
+  width: 1400px;
   font-weight: 700;
   color: rgb(49, 81, 185);
   background-color: rgb(224, 224, 250);
 }
 
 .table-head-cell {
+  position: relative;
+  left: 0px;
+  z-index: 1;
 	width: 120px;
   padding: 10px;
 }
@@ -15,23 +19,22 @@
   width: 50px;
 }
 
-.table-head-address,
 .table-head-name {
   width: 190px;
 }
 
-.table-head-email,
-.table-head-job-position {
-  width: 250px;
+.table-head-location {
+  width: 160px;
 }
 
-.table-head-hobby {
-  width: 140px;
+.table-head-job {
+  width: 250px;
 }
 
 .table-head-name,
 .table-head-number {
-  position: sticky;
+  position: sticky !important;
+  z-index: 4 !important;
 }
 
 .table-head-number {
@@ -41,5 +44,11 @@
 
 .table-head-name {
   left: 68px;
+  background-color: rgb(224, 224, 250);
+}
+
+.sticky {
+  position: sticky !important;
+  z-index: 2;
   background-color: rgb(224, 224, 250);
 }
