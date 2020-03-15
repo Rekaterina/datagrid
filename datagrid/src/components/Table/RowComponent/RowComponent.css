@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   width: 1400px !important;
+  height: 55px;
 }
 
 .row-cell {

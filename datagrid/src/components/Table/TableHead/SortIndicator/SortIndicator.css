@@ -1,0 +1,30 @@
+.sort-indicator {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.up {
+  margin-bottom: 1px;
+  border: 0 solid transparent;
+  border-right-width: 5px;
+  border-left-width: 5px;
+  border-bottom: 10px solid rgb(192, 191, 191);
+}
+
+.down {
+  border: 0 solid transparent;
+  border-left-width: 5px;
+  border-right-width: 5px;
+  border-top: 10px solid rgb(192, 191, 191);
+}
+
+.down-active {
+  border-top: 10px solid rgb(49, 81, 185);
+}
+
+.up-active {
+  border-bottom: 10px solid rgb(49, 81, 185);
+}
+

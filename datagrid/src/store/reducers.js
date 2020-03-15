@@ -7,6 +7,8 @@ import {
 	ACTION_CHANGE_CHECKBOX_NO,
 	ACTION_CHANGE_SELECTED_LANGUAGES,
 	ACTION_CHANGE_SELECTED_RATING,
+	ACTION_CHANGE_CHECKBOX_VIRTUALIZATION,
+	ACTION_CHANGE_SORT_INDICATOR
 } from './actionConstants';
 import data from "../data/data";
 
@@ -19,8 +21,10 @@ const defaultState = {
 	isVisibleLocationInput: false,
 	isCarYes: true,
 	isCarNo: true,
+	isTableVirtualization: false,
 	languages: [],
-	rating: []
+	rating: [],
+	sortingIndicator: false
 }
 
 const rootReducer = (state = defaultState, action) => {
@@ -37,10 +41,14 @@ const rootReducer = (state = defaultState, action) => {
 			return { ...state, isCarYes: action.payload };
 		case ACTION_CHANGE_CHECKBOX_NO:
 			return { ...state, isCarNo: action.payload };
+		case ACTION_CHANGE_CHECKBOX_VIRTUALIZATION:
+			return { ...state, isTableVirtualization: action.payload };
 		case ACTION_CHANGE_SELECTED_LANGUAGES:
 			return { ...state, languages: action.payload };
 		case ACTION_CHANGE_SELECTED_RATING:
 			return { ...state, rating: action.payload };
+		case ACTION_CHANGE_SORT_INDICATOR:
+			return { ...state, sortingIndicator: action.payload };
 		default:
 			return state;
 	}

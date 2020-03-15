@@ -20,7 +20,7 @@ class ExportButton extends React.Component {
     return (
       <div className="download-button-container">
         <CsvDownloader
-          filename="myfile"
+          filename="datafile"
           separator=";"
           wrapColumnChar="'"
           text="Download CSV"

@@ -6,7 +6,9 @@ import {
 	ACTION_CHANGE_CHECKBOX_YES,
 	ACTION_CHANGE_CHECKBOX_NO,
 	ACTION_CHANGE_SELECTED_LANGUAGES,
-	ACTION_CHANGE_SELECTED_RATING
+	ACTION_CHANGE_SELECTED_RATING,
+	ACTION_CHANGE_CHECKBOX_VIRTUALIZATION,
+	ACTION_CHANGE_SORT_INDICATOR
 	
 } from './actionConstants';
 
@@ -52,6 +54,13 @@ const changeCheckboxNo = (boolean) => {
 	}
 }
 
+const changeCheckboxTableVirtualization = (boolean) => {
+	return {
+		type: ACTION_CHANGE_CHECKBOX_VIRTUALIZATION,
+		payload: boolean
+	}
+}
+
 const changeSelectedLanguages = (lang) => {
 	return {
 		type: ACTION_CHANGE_SELECTED_LANGUAGES,
@@ -66,6 +75,13 @@ const changeSelectedRating = (rating) => {
 	}
 }
 
+const changeSortIndicator = (boolen) => {
+	return {
+		type: ACTION_CHANGE_SORT_INDICATOR,
+		payload: boolen
+	}
+}
+
 export {
 	changeMainFilterText,
 	changeRowsData,
@@ -74,5 +90,7 @@ export {
 	changeCheckboxYes,
 	changeCheckboxNo,
 	changeSelectedLanguages,
-	changeSelectedRating
+	changeSelectedRating,
+	changeCheckboxTableVirtualization,
+	changeSortIndicator
 }

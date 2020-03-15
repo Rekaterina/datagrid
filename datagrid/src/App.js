@@ -1,14 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changeRowsData } from './store/actions';
-import Table from "./components/Table/Table";
+import SimpleTable from "./components/Table/SimpleTable/SimpleTable";
+import VirtualizedTable from "./components/Table/VirtualizedTable/VirtualizedTable";
 import TableControls from "./components/TableControls/TableControls";
 import './App.css';
 import data from "./data/data";
 
 class App extends React.Component {
   filterData(prevProps) {
-    const { mainFilterText, nameFilterText, locationFilterText, changeRowsData, isCarYes, isCarNo, languages, rating } = this.props;
+    const { mainFilterText,
+      nameFilterText,
+      locationFilterText,
+      changeRowsData,
+      isCarYes, isCarNo,
+      languages,
+      rating } = this.props;
     if (mainFilterText !== prevProps.mainFilterText ||
       nameFilterText !== prevProps.nameFilterText ||
       locationFilterText !== prevProps.locationFilterText ||
@@ -16,7 +23,7 @@ class App extends React.Component {
       isCarNo !== prevProps.isCarNo ||
       languages !== prevProps.languages ||
       rating !== prevProps.rating) {
-      
+
       let selectedLanguages = [];
       if (languages) {
         selectedLanguages = languages.map(item => item.value);
@@ -46,19 +53,19 @@ class App extends React.Component {
       changeRowsData(rows);
     }
   }
-  
+
   componentDidUpdate(prevProps) {
     this.filterData(prevProps);
   }
 
-  render() {  
+  render() {
     return (
       <div className="app-wrapper">
-        <header className="header">
-          <h1 className="app-title">Data table</h1>
-        </header>
         <main className="main">
-          <Table />
+          <div className="table-container">
+            <h1 className="app-title">Data table</h1>
+            {this.props.isTableVirtualization ? <VirtualizedTable /> : <SimpleTable />}
+          </div>
           <TableControls />
         </main>
       </div>
@@ -75,7 +82,8 @@ const mapStateToProps = (state) => {
     isCarYes: state.isCarYes,
     isCarNo: state.isCarNo,
     languages: state.languages,
-    rating: state.rating
+    rating: state.rating,
+    isTableVirtualization: state.isTableVirtualization
   }
 }
 

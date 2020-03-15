@@ -1,24 +1,19 @@
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser';
-
 import TableHead from '../TableHead/TableHead';
+import RowCheckbox from './RowCheckbox/RowCheckbox';
 import './RowComponent.css';
 
-const RowComponent = ({ rowData, style, index }) => {
-  const divStyle = {
-    position: 'sticky',
-    top: '0',
-    zIndex: '2',
-  };
-  if (index === 0) {
+const RowComponent = ({ rowData, style, index, table }) => {
+  if (index === 0 && table) {
     return (
-      <div className="table-head" style={divStyle}>
+      <div className="table-head">
         <TableHead />
       </div>)
   } else {
     return (
       <div style={style} className={index % 2 ? 'row odd' : 'row even'}>
-        <div className={index % 2 ? 'row-cell row-number odd' : 'row-cell row-number even'}>{index}</div>
+        <RowCheckbox index={index}/>
         <div className={index % 2 ? 'row-cell row-name odd' : 'row-cell row-name even'}>{rowData.name}</div>
         <div className="row-cell row-birth-date">{rowData.birthDate}</div>
         <div className="row-cell row-location">{rowData.location}</div>

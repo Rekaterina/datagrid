@@ -7,6 +7,7 @@ import CheckBoxFilter from "./CheckBoxFilter/CheckBoxFilter";
 import LangSelect from "./Select/LangSelect";
 import RatingSelect from "./Select/RatingSelect";
 import ExportButton from "./ExportButton/ExportButton";
+import CheckBoxTableVirtualization from "./CheckBoxTableVirtualization/CheckBoxTableVirtualization";
 import './TableControls.css';
 
 class TableControls extends React.Component {
@@ -20,6 +21,7 @@ class TableControls extends React.Component {
       <LangSelect />
       <RatingSelect />
       <CheckBoxFilter />
+      <CheckBoxTableVirtualization />
       <ExportButton />
     </div>
     )
