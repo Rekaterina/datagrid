@@ -8,6 +8,26 @@ import './App.css';
 import data from "./data/data";
 
 class App extends React.Component {
+  componentDidUpdate(prevProps) {
+    const { mainFilterText,
+      nameFilterText,
+      locationFilterText,
+      isCarYes, isCarNo,
+      languages,
+      rating, sortName, sortLocation } = this.props;
+    if (mainFilterText !== prevProps.mainFilterText ||
+      nameFilterText !== prevProps.nameFilterText ||
+      locationFilterText !== prevProps.locationFilterText ||
+      isCarYes !== prevProps.isCarYes ||
+      isCarNo !== prevProps.isCarNo ||
+      languages !== prevProps.languages ||
+      rating !== prevProps.rating ||
+      sortName !== prevProps.sortName ||
+      sortLocation !== prevProps.sortLocation) {
+      this.filterData(prevProps);
+    }
+  }
+
   filterData(prevProps) {
     const { mainFilterText,
       nameFilterText,
@@ -15,47 +35,65 @@ class App extends React.Component {
       changeRowsData,
       isCarYes, isCarNo,
       languages,
-      rating } = this.props;
-    if (mainFilterText !== prevProps.mainFilterText ||
-      nameFilterText !== prevProps.nameFilterText ||
-      locationFilterText !== prevProps.locationFilterText ||
-      isCarYes !== prevProps.isCarYes ||
-      isCarNo !== prevProps.isCarNo ||
-      languages !== prevProps.languages ||
-      rating !== prevProps.rating) {
+      rating, sortName, sortLocation } = this.props;
 
-      let selectedLanguages = [];
-      if (languages) {
-        selectedLanguages = languages.map(item => item.value);
+    if (sortName !== prevProps.sortName) {
+      if (sortName === 'up') {
+        arr.sort((a, b) => a.name > b.name ? 1 : -1);
       }
 
-      let selectedRating = [];
-      if (rating) {
-        selectedRating = rating.map(item => item.value);
+      if (sortName === 'down') {
+        arr.sort((a, b) => a.name < b.name ? 1 : -1);
       }
 
-      let rows = [];
-      data.forEach(item => {
-        const { name, location, job, isPersonalCar, lang, rating, birthDate, salary } = item;
-        const mainFilteredString = `${name} ${location} ${job} ${lang} ${birthDate} ${salary} ${isPersonalCar ? 'yes' : 'no'}`;
-
-        if (mainFilteredString.toLowerCase().indexOf(mainFilterText.toLowerCase()) === -1 ||
-          name.toLowerCase().indexOf(nameFilterText.toLowerCase()) === -1 ||
-          location.toLowerCase().indexOf(locationFilterText.toLowerCase()) === -1 ||
-          (!isCarYes && isPersonalCar) ||
-          (!isCarNo && !isPersonalCar) ||
-          (selectedLanguages.length > 0 && selectedLanguages.indexOf(lang) === -1) ||
-          (selectedRating.length > 0 && selectedRating.indexOf(rating) === -1)) {
-          return;
-        }
-        rows.push(item);
-      });
-      changeRowsData(rows);
+      if (sortName === 'no') {
+        arr.sort((a, b) => a.id > b.id ? 1 : -1);
+      }
     }
-  }
 
-  componentDidUpdate(prevProps) {
-    this.filterData(prevProps);
+    if (sortLocation !== prevProps.sortLocation) {
+      if (sortLocation === 'up') {
+        arr.sort((a, b) => a.location > b.location ? 1 : -1);
+      }
+
+      if (sortLocation === 'down') {
+        arr.sort((a, b) => a.location < b.location ? 1 : -1);
+      }
+
+      if (sortLocation === 'no') {
+        arr.sort((a, b) => a.id > b.id ? 1 : -1);
+      }
+    }
+
+    let selectedLanguages = [];
+    if (languages) {
+      selectedLanguages = languages.map(item => item.value);
+    }
+
+    let selectedRating = [];
+    if (rating) {
+      selectedRating = rating.map(item => item.value);
+    }
+
+    let arr = data;
+
+    let rows = [];
+    arr.forEach(item => {
+      const { name, location, job, isPersonalCar, lang, rating, birthDate, salary } = item;
+      const mainFilteredString = `${name} ${location} ${job} ${lang} ${birthDate} ${salary} ${isPersonalCar ? 'yes' : 'no'}`;
+
+      if (mainFilteredString.toLowerCase().indexOf(mainFilterText.toLowerCase()) === -1 ||
+        name.toLowerCase().indexOf(nameFilterText.toLowerCase()) === -1 ||
+        location.toLowerCase().indexOf(locationFilterText.toLowerCase()) === -1 ||
+        (!isCarYes && isPersonalCar) ||
+        (!isCarNo && !isPersonalCar) ||
+        (selectedLanguages.length > 0 && selectedLanguages.indexOf(lang) === -1) ||
+        (selectedRating.length > 0 && selectedRating.indexOf(rating) === -1)) {
+        return;
+      }
+      rows.push(item);
+    });
+    changeRowsData(rows);
   }
 
   render() {
@@ -83,7 +121,9 @@ const mapStateToProps = (state) => {
     isCarNo: state.isCarNo,
     languages: state.languages,
     rating: state.rating,
-    isTableVirtualization: state.isTableVirtualization
+    isTableVirtualization: state.isTableVirtualization,
+    sortName: state.sortName,
+    sortLocation: state.sortLocation
   }
 }
 

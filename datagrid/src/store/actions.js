@@ -8,7 +8,8 @@ import {
 	ACTION_CHANGE_SELECTED_LANGUAGES,
 	ACTION_CHANGE_SELECTED_RATING,
 	ACTION_CHANGE_CHECKBOX_VIRTUALIZATION,
-	ACTION_CHANGE_SORT_INDICATOR
+	ACTION_CHANGE_SORT_LOCATION,
+	ACTION_CHANGE_SORT_NAME
 	
 } from './actionConstants';
 
@@ -75,10 +76,17 @@ const changeSelectedRating = (rating) => {
 	}
 }
 
-const changeSortIndicator = (boolen) => {
+const changeSortLocation = (sort) => {
 	return {
-		type: ACTION_CHANGE_SORT_INDICATOR,
-		payload: boolen
+		type: ACTION_CHANGE_SORT_LOCATION,
+		payload: sort
+	}
+}
+
+const changeSortName = (sort) => {
+	return {
+		type: ACTION_CHANGE_SORT_NAME,
+		payload: sort
 	}
 }
 
@@ -92,5 +100,6 @@ export {
 	changeSelectedLanguages,
 	changeSelectedRating,
 	changeCheckboxTableVirtualization,
-	changeSortIndicator
+	changeSortLocation,
+	changeSortName
 }

@@ -20,7 +20,6 @@ class CheckBoxTableVirtualization extends React.Component {
             changeCheckboxTableVirtualization(!isTableVirtualization);
           }}
         />
-
       </div>
     )
   }

@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import SortIndicator from './SortIndicator/SortIndicator';
 import './TableHead.css';
 
 class TableHead extends React.Component {
@@ -8,14 +6,8 @@ class TableHead extends React.Component {
     return (
       <div className="table-head-row row">
         <div className="table-head-cell table-head-number"></div>
-        <div className="table-head-cell table-head-name">
-          <span>Name</span>
-          <SortIndicator />
-        </div>
-        <div className="table-head-cell table-head-birth-date">
-          <span>Birth date</span>
-          <SortIndicator />
-        </div>
+        <div className="table-head-cell table-head-name">Name</div>
+        <div className="table-head-cell table-head-birth-date">Birth date</div>
         <div className="table-head-cell table-head-location">Location</div>
         <div className="table-head-cell table-head-job">Job position</div>
         <div className="table-head-cell table-head-salary">Salary</div>
@@ -27,10 +19,4 @@ class TableHead extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    sortingIndicator: state.sortingIndicator,
-  }
-}
-
-export default connect(mapStateToProps)(TableHead);
+export default TableHead;

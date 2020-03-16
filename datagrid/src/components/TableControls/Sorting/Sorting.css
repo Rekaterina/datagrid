@@ -1,0 +1,27 @@
+.sorting-item-container {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.sorting-item-title {
+  margin-right: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgb(128, 128, 128);
+}
+
+.sorting-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+  border-radius: 2px;
+  background-color: rgb(207, 205, 205);
+  cursor: pointer;
+}
+
+.active {
+  background-color: rgb(49, 81, 185);
+}
