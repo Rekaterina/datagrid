@@ -1,17 +1,65 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SortingItem from './SortingItem';
+import {
+  changeSortName
+} from '../../../store/actions';
+
 import './Sorting.css';
 
 class Sorting extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isSorting: 'no'
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    if (prevState !== this.state) {
+      this.setSortingState();
+    }
+  }
+
+  setSortingState() {
+    const { changeSortName } = this.props;
+    changeSortName(this.state.isSorting);
+  }
+
+  onClickHandlerNo() {
+    if (this.state.isSorting !== 'no') {
+      this.setState(() => ({
+        isSorting: 'no'
+      }));
+    }
+  }
+
+  onClickHandlerUp() {
+    if (this.state.isSorting !== 'up') {
+      this.setState(() => ({
+        isSorting: 'up'
+      }));
+    }
+  }
+
+  onClickHandlerDown() {
+    if (this.state.isSorting !== 'down') {
+      this.setState(() => ({
+        isSorting: 'down'
+      }));
+    }
+  }
+
   render() {
-    const sortingColumn = ['Name', 'Birth date', 'Location', 'Job position', 'Salary', 'Foreign language', 'Personal car', 'Rating' ];
-    const sortingItems = sortingColumn.map((item, index) =>
-    <SortingItem itemTitle={item} index={index} key={index} />
-  );
+    const { isSorting } = this.state;
     return (
-      <div className="sorting-container">
-        {sortingItems}
+      <div className="sorting-item-container">
+        <span className="sorting-item-title">Name</span>
+        <div className={isSorting === 'no' ? 'no sorting-btn active' : 'no sorting-btn'}
+          onClick={this.onClickHandlerNo.bind(this)}>&#10006;</div>
+        <div className={isSorting === 'up' ? 'up sorting-btn active' : 'up sorting-btn'}
+          onClick={this.onClickHandlerUp.bind(this)}>&#11014;</div>
+        <div className={isSorting === 'down' ? 'down sorting-btn active' : 'down sorting-btn'}
+          onClick={this.onClickHandlerDown.bind(this)}>&#11015;</div>
       </div>
     )
   }
@@ -19,8 +67,12 @@ class Sorting extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    isTableVirtualization: state.isTableVirtualization
+    sortName: state.sortName
   }
 }
 
-export default connect(mapStateToProps)(Sorting);
+const mapDispatchToProps = {
+  changeSortName
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sorting);

@@ -4,6 +4,7 @@ import { changeRowsData } from './store/actions';
 import SimpleTable from "./components/Table/SimpleTable/SimpleTable";
 import VirtualizedTable from "./components/Table/VirtualizedTable/VirtualizedTable";
 import TableControls from "./components/TableControls/TableControls";
+import ColumnSelect from "./components/ColumnSelect/ColumnSelect";
 import './App.css';
 import data from "./data/data";
 
@@ -14,7 +15,7 @@ class App extends React.Component {
       locationFilterText,
       isCarYes, isCarNo,
       languages,
-      rating, sortName, sortLocation } = this.props;
+      rating, sortName, columns } = this.props;
     if (mainFilterText !== prevProps.mainFilterText ||
       nameFilterText !== prevProps.nameFilterText ||
       locationFilterText !== prevProps.locationFilterText ||
@@ -23,21 +24,23 @@ class App extends React.Component {
       languages !== prevProps.languages ||
       rating !== prevProps.rating ||
       sortName !== prevProps.sortName ||
-      sortLocation !== prevProps.sortLocation) {
-      this.filterData(prevProps);
+      columns !== prevProps.columns) {
+      this.filterAndSortData();
     }
   }
 
-  filterData(prevProps) {
+  filterAndSortData() {
     const { mainFilterText,
       nameFilterText,
       locationFilterText,
       changeRowsData,
       isCarYes, isCarNo,
       languages,
-      rating, sortName, sortLocation } = this.props;
+      rating, sortName } = this.props;
 
-    if (sortName !== prevProps.sortName) {
+      let arr = data;
+
+    
       if (sortName === 'up') {
         arr.sort((a, b) => a.name > b.name ? 1 : -1);
       }
@@ -49,21 +52,6 @@ class App extends React.Component {
       if (sortName === 'no') {
         arr.sort((a, b) => a.id > b.id ? 1 : -1);
       }
-    }
-
-    if (sortLocation !== prevProps.sortLocation) {
-      if (sortLocation === 'up') {
-        arr.sort((a, b) => a.location > b.location ? 1 : -1);
-      }
-
-      if (sortLocation === 'down') {
-        arr.sort((a, b) => a.location < b.location ? 1 : -1);
-      }
-
-      if (sortLocation === 'no') {
-        arr.sort((a, b) => a.id > b.id ? 1 : -1);
-      }
-    }
 
     let selectedLanguages = [];
     if (languages) {
@@ -74,8 +62,6 @@ class App extends React.Component {
     if (rating) {
       selectedRating = rating.map(item => item.value);
     }
-
-    let arr = data;
 
     let rows = [];
     arr.forEach(item => {
@@ -102,6 +88,7 @@ class App extends React.Component {
         <main className="main">
           <div className="table-container">
             <h1 className="app-title">Data table</h1>
+            <ColumnSelect />
             {this.props.isTableVirtualization ? <VirtualizedTable /> : <SimpleTable />}
           </div>
           <TableControls />
@@ -123,7 +110,7 @@ const mapStateToProps = (state) => {
     rating: state.rating,
     isTableVirtualization: state.isTableVirtualization,
     sortName: state.sortName,
-    sortLocation: state.sortLocation
+    columns: state.columns
   }
 }
 

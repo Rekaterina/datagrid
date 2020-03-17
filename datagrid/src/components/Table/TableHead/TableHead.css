@@ -59,3 +59,11 @@
   z-index: 2;
   background-color: rgb(224, 224, 250);
 }
+
+.hidden {
+  display: none;
+}
+
+.title-active {
+  color: gray;
+}

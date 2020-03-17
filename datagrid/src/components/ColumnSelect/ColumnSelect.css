@@ -1,0 +1,10 @@
+.column-filter-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.column-select {
+  margin-left: 10px;
+  width: 800px;
+}

@@ -8,8 +8,8 @@ import {
 	ACTION_CHANGE_SELECTED_LANGUAGES,
 	ACTION_CHANGE_SELECTED_RATING,
 	ACTION_CHANGE_CHECKBOX_VIRTUALIZATION,
-	ACTION_CHANGE_SORT_LOCATION,
-	ACTION_CHANGE_SORT_NAME
+	ACTION_CHANGE_SORT_NAME,
+	ACTION_CHANGE_SELECTED_COLUMNS
 } from './actionConstants';
 import data from "../data/data";
 
@@ -25,8 +25,16 @@ const defaultState = {
 	isTableVirtualization: true,
 	languages: [],
 	rating: [],
-	sortName: 'no',
-	sortLocation: 'no',
+	columns: [
+		{ value: "BirthDate", label: "Birth date" },
+		{ value: "Location", label: "Location" },
+		{ value: "JobPosition", label: "Job position" },
+		{ value: "Salary", label: "Salary" },
+		{ value: "ForeignLanguage", label: "Foreign language" },
+		{ value: "PersonalCar", label: "Personal car" },
+		{ value: "Rating", label: "Rating" },
+	],
+	sortName: 'no'
 }
 
 const rootReducer = (state = defaultState, action) => {
@@ -49,8 +57,8 @@ const rootReducer = (state = defaultState, action) => {
 			return { ...state, languages: action.payload };
 		case ACTION_CHANGE_SELECTED_RATING:
 			return { ...state, rating: action.payload };
-		case ACTION_CHANGE_SORT_LOCATION:
-			return { ...state, sortLocation: action.payload };
+		case ACTION_CHANGE_SELECTED_COLUMNS:
+			return { ...state, columns: action.payload };
 		case ACTION_CHANGE_SORT_NAME:
 			return { ...state, sortName: action.payload };
 		default:

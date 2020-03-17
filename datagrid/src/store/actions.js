@@ -8,8 +8,8 @@ import {
 	ACTION_CHANGE_SELECTED_LANGUAGES,
 	ACTION_CHANGE_SELECTED_RATING,
 	ACTION_CHANGE_CHECKBOX_VIRTUALIZATION,
-	ACTION_CHANGE_SORT_LOCATION,
-	ACTION_CHANGE_SORT_NAME
+	ACTION_CHANGE_SORT_NAME,
+	ACTION_CHANGE_SELECTED_COLUMNS
 	
 } from './actionConstants';
 
@@ -76,10 +76,10 @@ const changeSelectedRating = (rating) => {
 	}
 }
 
-const changeSortLocation = (sort) => {
+const changeSelectedColumn = (column) => {
 	return {
-		type: ACTION_CHANGE_SORT_LOCATION,
-		payload: sort
+		type: ACTION_CHANGE_SELECTED_COLUMNS,
+		payload: column
 	}
 }
 
@@ -99,7 +99,7 @@ export {
 	changeCheckboxNo,
 	changeSelectedLanguages,
 	changeSelectedRating,
+	changeSelectedColumn,
 	changeCheckboxTableVirtualization,
-	changeSortLocation,
 	changeSortName
 }

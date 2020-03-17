@@ -1,40 +1,43 @@
 import React from 'react';
-import ReactHtmlParser from 'react-html-parser';
 import TableHead from '../TableHead/TableHead';
-import RowCheckbox from './RowCheckbox/RowCheckbox';
+import { connect } from 'react-redux';
+import Stars from './Stars/Stars';
 import './RowComponent.css';
 
-const RowComponent = ({ rowData, style, index, table }) => {
-  if (index === 0 && table) {
-    return (
-      <div className="table-head">
-        <TableHead />
-      </div>)
-  } else {
-    return (
-      <div style={style} className={index % 2 ? 'row odd' : 'row even'}>
-        <RowCheckbox index={index}/>
-        <div className={index % 2 ? 'row-cell row-name odd' : 'row-cell row-name even'}>{rowData.name}</div>
-        <div className="row-cell row-birth-date">{rowData.birthDate}</div>
-        <div className="row-cell row-location">{rowData.location}</div>
-        <div className="row-cell row-job">{rowData.job}</div>
-        <div className="row-cell row-salary">{rowData.salary}</div>
-        <div className="row-cell row-lang">{rowData.lang}</div>
-        <div className="row-cell row-car">{rowData.isPersonalCar ? 'Yes' : 'No'}</div>
-        <Stars rowData={rowData} />
-      </div>
-    );
+class RowComponent extends React.Component {
+  render() {
+    const { columns, rowData, style, index, table } = this.props;
+    let arrTitle;
+    if (columns) {
+      arrTitle = columns.map(item => item.value);
+    }
+    if (index === 0 && table) {
+      return (
+        <div className="table-head">
+          <TableHead />
+        </div>)
+    } else {
+      return (
+        <div style={style} className={index % 2 ? 'row odd' : 'row even'}>
+          <div className={index % 2 ? 'row-cell row-number odd' : 'row-cell row-number even'}>{rowData.id}</div>
+          <div className={index % 2 ? 'row-cell row-name odd' : 'row-cell row-name even'}>{rowData.name}</div>
+          <div className={columns && arrTitle.includes('BirthDate') ? 'row-cell row-birth-date' : 'row-cell row-birth-date hidden'}>{rowData.birthDate}</div>
+          <div className={columns && arrTitle.includes('Location') ? 'row-cell row-location' : 'row-cell row-location hidden'}>{rowData.location}</div>
+          <div className={columns && arrTitle.includes('JobPosition') ? 'row-cell row-job' : 'row-cell row-job hidden'}>{rowData.job}</div>
+          <div className={columns && arrTitle.includes('Salary') ? 'row-cell row-salary' : 'row-cell row-salary hidden'}>{rowData.salary}</div>
+          <div className={columns && arrTitle.includes('ForeignLanguage') ? 'row-cell row-lang' : 'row-cell row-lang hidden'}>{rowData.lang}</div>
+          <div className={columns && arrTitle.includes('PersonalCar') ? 'row-cell row-car' : 'row-cell row-car hidden'}>{rowData.isPersonalCar ? 'Yes' : 'No'}</div>
+          <Stars rowData={rowData} arrTitle={arrTitle} columns={columns} />
+        </div>
+      );
+    }
   }
 }
 
-const Stars = ({ rowData }) => {
-  let count = rowData.rating;
-  let string = '';
-  while (count > 0) {
-    string = string + `<i class="far fa-star"></i>`;
-    count = count - 1;
+const mapStateToProps = (state) => {
+  return {
+    columns: state.columns
   }
-  return (<div className="row-cell row-rating">{ReactHtmlParser(string)}</div>);
 }
 
-export default RowComponent;
+export default connect(mapStateToProps)(RowComponent);
