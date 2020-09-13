@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2% 4%;
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1100px;
+}
+
+.app-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: rgb(49, 81, 185);
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

@@ -1,0 +1,18 @@
+.checkbox-virtual-table-container {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+  
+.checkbox-virtual-table {
+  width: 18px;
+  height: 18px;
+  margin: 5px 20px 5px 5px;
+}
+
+.checkbox-virtual-table-label {
+  margin-bottom: 3px;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgb(128, 128, 128);
+}

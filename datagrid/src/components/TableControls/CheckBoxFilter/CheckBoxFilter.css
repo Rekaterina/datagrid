@@ -1,0 +1,14 @@
+.checkboxes {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-filter {
+  width: 18px;
+  height: 18px;
+  margin: 5px 20px 5px 5px;
+}
+
+.checkbox-filter-label {
+  color: gray;
+}
